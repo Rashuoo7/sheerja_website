@@ -1,0 +1,1 @@
+/* uicore-global.js */

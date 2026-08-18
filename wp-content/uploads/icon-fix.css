@@ -1,0 +1,200 @@
+/* ================================================================
+   ICON FIX CSS - Fixes broken uicore-icons + Elementor SVG icons
+   ================================================================ */
+
+/* ---------------------------------------------------------------
+   1. FIX NAV DROPDOWN ARROW (□ next to "Services")
+   The original uses font-family:uicore-icons content:"\E901"
+   Replace with a pure CSS triangle
+--------------------------------------------------------------- */
+.uicore-navbar nav .menu-item-has-children > a:after {
+    font-family: inherit !important;
+    content: '' !important;
+    display: inline-block !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 4px solid transparent !important;
+    border-right: 4px solid transparent !important;
+    border-top: 5px solid currentColor !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    margin-left: 6px !important;
+    vertical-align: middle !important;
+    opacity: 0.7 !important;
+    transform: none !important;
+}
+
+/* Mobile/side nav dropdown arrow */
+.uicore-navigation-wrapper .uicore-menu-container ul .menu-item-has-children > a:after {
+    font-family: inherit !important;
+    content: '' !important;
+    display: inline-block !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 5px solid transparent !important;
+    border-bottom: 5px solid transparent !important;
+    border-left: 6px solid currentColor !important;
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    opacity: 0.5 !important;
+    font-size: 0 !important;
+}
+
+/* ---------------------------------------------------------------
+   2. FIX BREADCRUMB SEPARATOR (□ between "Home" and page name)
+   Uses <i class="uicore-separator uicore-i-arrow">
+--------------------------------------------------------------- */
+i.uicore-separator.uicore-i-arrow,
+.uicore-separator.uicore-i-arrow {
+    font-style: normal !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    margin: 0 6px !important;
+    opacity: 0.5 !important;
+    width: auto !important;
+    height: auto !important;
+}
+i.uicore-separator.uicore-i-arrow::before,
+.uicore-separator.uicore-i-arrow::before {
+    content: '»' !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    display: inline !important;
+    border: none !important;
+    width: auto !important;
+    height: auto !important;
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* ---------------------------------------------------------------
+   3. FIX any other uicore-i-* icons that use the missing font
+   General fallback: hide the broken square character
+--------------------------------------------------------------- */
+[class^='uicore-i-'],
+[class*=' uicore-i-'] {
+    font-family: inherit !important;
+}
+[class^='uicore-i-']::before,
+[class*=' uicore-i-']::before {
+    font-family: inherit !important;
+}
+
+/* uicore-i-search → magnifying glass via CSS mask */
+.uicore-i-search::before {
+    content: '' !important;
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    background-color: currentColor !important;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'/%3E%3C/svg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'/%3E%3C/svg%3E") !important;
+    -webkit-mask-size: contain !important;
+    mask-size: contain !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+}
+
+/* uicore-i-close → X */
+.uicore-i-close::before {
+    content: '✕' !important;
+}
+
+/* uicore-i-phone → phone */
+.uicore-i-phone::before {
+    content: '✆' !important;
+}
+
+/* uicore-i-mail → envelope */
+.uicore-i-mail::before {
+    content: '✉' !important;
+}
+
+/* uicore-i-map-pin → pin */
+.uicore-i-map-pin::before {
+    content: '📍' !important;
+    font-size: inherit !important;
+}
+
+/* uicore-i-facebook */
+.uicore-i-facebook::before {
+    content: 'f' !important;
+    font-weight: bold !important;
+}
+
+/* uicore-i-instagram */
+.uicore-i-instagram::before {
+    content: '📷' !important;
+}
+
+/* uicore-i-linkedin */
+.uicore-i-linkedin::before {
+    content: 'in' !important;
+    font-weight: bold !important;
+    font-size: 0.75em !important;
+}
+
+/* uicore-i-whatsapp */
+.uicore-i-whatsapp::before {
+    content: '💬' !important;
+}
+
+/* uicore-i-twitter / X */
+.uicore-i-twitter::before {
+    content: '𝕏' !important;
+}
+
+/* uicore-i-youtube */
+.uicore-i-youtube::before {
+    content: '▶' !important;
+}
+
+/* ---------------------------------------------------------------
+   4. FIX Elementor inline SVG icon colours
+--------------------------------------------------------------- */
+.elementor-icon svg.e-font-icon-svg,
+.elementor-icon-list-icon svg.e-font-icon-svg {
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Icon-box SVG icons */
+.elementor-widget-icon-box .elementor-icon svg.e-font-icon-svg {
+    width: 1em;
+    height: 1em;
+    fill: var(--e-global-color-uicore_primary, #2F1441);
+}
+
+/* Footer icon-list bullet dots */
+.elementor-widget-icon-list .elementor-icon-list-icon svg.e-font-icon-svg {
+    width: 8px;
+    height: 8px;
+    fill: var(--e-global-color-uicore_accent, #C9A84C);
+    flex-shrink: 0;
+}
+
+/* Footer contact icons */
+.elementor-element-573b59d .elementor-icon svg,
+.elementor-element-573b59d .elementor-icon-list-icon svg {
+    fill: var(--e-global-color-uicore_accent, #C9A84C);
+}
+
+/* ---------------------------------------------------------------
+   5. Back-to-top button arrow
+--------------------------------------------------------------- */
+#uicore-back-to-top .uicore-i-arrow::before {
+    content: '' !important;
+    display: inline-block !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-left: 2px solid currentColor !important;
+    border-top: 2px solid currentColor !important;
+    transform: rotate(45deg) translateY(3px) !important;
+}
