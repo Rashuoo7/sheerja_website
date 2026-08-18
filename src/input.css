@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Brand tokens carried over from the original theme's palette */
+@theme {
+  --color-brand: #2F1441;
+  --color-brand-dark: #1F0D2B;
+  --color-brand-light: #4A2266;
+  --color-accent: #DAB559;
+  --color-accent-dark: #C29C3F;
+  --color-headline: #0B0A27;
+  --color-body: #6E7A84;
+  --color-mist: #F8FCFC;
+
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-body font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply text-headline font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* v4 does not let @apply reference another custom class, so the shared
+     button base is repeated rather than composed from a .btn class. */
+  .btn-accent {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full
+           px-7 py-3.5 text-center text-sm font-semibold tracking-wide
+           transition-colors duration-200
+           bg-accent text-brand hover:bg-accent-dark;
+  }
+  .btn-outline {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full
+           px-7 py-3.5 text-center text-sm font-semibold tracking-wide
+           transition-colors duration-200
+           border-2 border-white/70 text-white hover:bg-white hover:text-brand;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .eyebrow {
+    @apply text-accent-dark text-xs font-bold uppercase tracking-[0.2em];
+  }
+}

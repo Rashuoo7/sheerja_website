@@ -1,0 +1,27 @@
+{
+  "name": "sheerja_website",
+  "version": "1.0.0",
+  "description": "Static HTML website for **Shreeja Marine Services** — a Mumbai-based company providing comprehensive shipping solutions including technical management, crew management, marine insurance, and more.",
+  "scripts": {
+    "build:pages": "python src/build_pages.py",
+    "build:css": "tailwindcss -i src/input.css -o assets/css/app.css --minify",
+    "build": "npm run build:pages && npm run build:css",
+    "watch": "tailwindcss -i src/input.css -o assets/css/app.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rashuoo7/sheerja_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rashuoo7/sheerja_website/issues"
+  },
+  "homepage": "https://github.com/Rashuoo7/sheerja_website#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
