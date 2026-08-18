@@ -13,6 +13,15 @@
         position: relative !important;
     }
     
+    /* Override the uicore-toggle hide rule for header button */
+    #wrapper-navbar button.uicore-ham,
+    .uicore-header-wrapper button.uicore-ham,
+    body button.uicore-ham:not(.uicore-navigation-wrapper button) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
     /* Desktop menu hidden on mobile */
     .uicore-nav-menu {
         display: none !important;
