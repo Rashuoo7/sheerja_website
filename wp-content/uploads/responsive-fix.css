@@ -386,3 +386,29 @@ html, body {
         width: 100% !important;
     }
 }
+
+/* ---------------------------------------------------------------
+   11. FIX HAMBURGER BARS — missing CSS variable makes them invisible
+--------------------------------------------------------------- */
+:root {
+    --uicore-header--menu-typo-c: #ffffff;
+}
+#wrapper-navbar .uicore-ham .bar,
+.uicore-header-wrapper .uicore-ham .bar {
+    background-color: #ffffff !important;
+    width: 22px !important;
+    height: 2px !important;
+    display: block !important;
+}
+/* Ensure hamburger button itself is visible in header */
+#wrapper-navbar button.uicore-ham {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+/* Hide on desktop */
+@media (min-width: 1025px) {
+    #wrapper-navbar button.uicore-ham {
+        display: none !important;
+    }
+}
