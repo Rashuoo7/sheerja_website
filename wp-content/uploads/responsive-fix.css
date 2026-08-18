@@ -325,3 +325,55 @@ html, body {
         right: 10px !important;
     }
 }
+
+/* ---------------------------------------------------------------
+   8. CONTACT FORM — stack fields on mobile
+--------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .elementor-form .elementor-form-fields-wrapper {
+        flex-wrap: wrap !important;
+    }
+    .elementor-form .elementor-field-group.elementor-col-50 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-basis: 100% !important;
+    }
+    .elementor-form .elementor-field-group.elementor-col-100 {
+        width: 100% !important;
+    }
+}
+
+/* ---------------------------------------------------------------
+   9. BUTTON OVERFLOW — prevent CTA buttons from overflowing
+--------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .elementor-button {
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    .bdt-dual-button {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+    
+    .bdt-dual-button .bdt-ep-button {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* ---------------------------------------------------------------
+   10. SERVICE PAGE — responsive grid for service cards
+--------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .bdt-ep-advanced-image-gallery .bdt-grid {
+        flex-wrap: wrap !important;
+    }
+    .bdt-ep-advanced-image-gallery .bdt-grid > * {
+        width: 100% !important;
+    }
+}
