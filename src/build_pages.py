@@ -107,6 +107,15 @@ STATS = [("1000", "+", "Seafarers Worldwide"), ("20", "+", "Vessels Managed"),
          ("20", "+", "Happy Clients"), ("100", "%", "Retention Rate")]
 
 
+def home(p):
+    """Link to the site root without exposing "index.html" in the URL.
+
+    Returns "./" at the root and "../" / "../../" from nested pages, so the
+    site still works if it is ever served from a subdirectory.
+    """
+    return p or "./"
+
+
 def icon(path, cls="h-6 w-6"):
     return (f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             f'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" '
@@ -133,7 +142,7 @@ def head(title, desc, p):
 
 
 def nav_links(p, active):
-    items = [("Home", f"{p}index.html" if p else "index.html", "home"),
+    items = [("Home", home(p), "home"),
              ("About Us", f"{p}about-us/", "about"),
              ("Services", f"{p}services/", "services"),
              ("Contact Us", f"{p}contact-us/", "contact")]
@@ -165,7 +174,7 @@ def mobile_links(p, active):
     subs = "".join(
         f'<a href="{p}services/{s}/" class="block border-b border-white/10 py-3 pl-4 text-[15px] text-white/75 hover:text-accent">{n}</a>'
         for s, n, _, _ in SERVICES)
-    return f"""<a href="{p}index.html" class="block border-b border-white/10 py-4 text-lg font-semibold {'text-accent' if active=='home' else 'text-white hover:text-accent'}">Home</a>
+    return f"""<a href="{home(p)}" class="block border-b border-white/10 py-4 text-lg font-semibold {'text-accent' if active=='home' else 'text-white hover:text-accent'}">Home</a>
 <a href="{p}about-us/" class="block border-b border-white/10 py-4 text-lg font-semibold {'text-accent' if active=='about' else 'text-white hover:text-accent'}">About Us</a>
 <div class="border-b border-white/10">
   <button type="button" data-submenu-toggle aria-expanded="false" class="flex w-full items-center justify-between py-4 text-left text-lg font-semibold {'text-accent' if active=='services' else 'text-white hover:text-accent'}">
@@ -183,7 +192,7 @@ def mobile_links(p, active):
 def header(p, active):
     return f"""<header data-header class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
 <div class="container-x flex h-20 items-center justify-between gap-4">
-  <a href="{p}index.html" class="shrink-0" aria-label="{BRAND} home">
+  <a href="{home(p)}" class="shrink-0" aria-label="{BRAND} home">
     <img src="{p}assets/img/logo.png" alt="{BRAND}" class="h-12 w-auto" width="150" height="48">
   </a>
   <nav class="hidden items-center gap-8 lg:flex" aria-label="Main">
@@ -233,7 +242,7 @@ def footer(p):
   <div>
     <h2 class="text-base font-bold text-white">Company</h2>
     <ul class="mt-5 space-y-3 text-sm">
-      <li><a href="{p}index.html" class="transition-colors hover:text-accent">Home</a></li>
+      <li><a href="{home(p)}" class="transition-colors hover:text-accent">Home</a></li>
       <li><a href="{p}about-us/" class="transition-colors hover:text-accent">About Us</a></li>
       <li><a href="{p}services/" class="transition-colors hover:text-accent">Services</a></li>
       <li><a href="{p}contact-us/" class="transition-colors hover:text-accent">Contact Us</a></li>
@@ -465,7 +474,7 @@ def build_about():
                 "management services since 2016.", p)
     html += header(p, "about")
     html += f"""<main id="main">
-{page_hero("About Us", f'<a href="{p}index.html" class="hover:text-accent">Home</a><span>/</span><span class="text-white">About Us</span>', p)}
+{page_hero("About Us", f'<a href="{home(p)}" class="hover:text-accent">Home</a><span>/</span><span class="text-white">About Us</span>', p)}
 
 <section class="section">
   <div class="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -535,7 +544,7 @@ def build_services():
                 "documentation services from Shreeja Marine Services.", p)
     html += header(p, "services")
     html += f"""<main id="main">
-{page_hero("Our Services", f'<a href="{p}index.html" class="hover:text-accent">Home</a><span>/</span><span class="text-white">Services</span>', p)}
+{page_hero("Our Services", f'<a href="{home(p)}" class="hover:text-accent">Home</a><span>/</span><span class="text-white">Services</span>', p)}
 <section class="section">
   <div class="container-x">
     <div class="mx-auto max-w-2xl text-center">
@@ -574,7 +583,7 @@ def build_service_detail(slug, name, desc, img):
     html = head(f"{name} - {BRAND}", desc, p)
     html += header(p, "services")
     html += f"""<main id="main">
-{page_hero(name, f'<a href="{p}index.html" class="hover:text-accent">Home</a><span>/</span><a href="{p}services/" class="hover:text-accent">Services</a><span>/</span><span class="text-white">{name}</span>', p)}
+{page_hero(name, f'<a href="{home(p)}" class="hover:text-accent">Home</a><span>/</span><a href="{p}services/" class="hover:text-accent">Services</a><span>/</span><span class="text-white">{name}</span>', p)}
 
 <section class="section">
   <div class="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -639,7 +648,7 @@ def build_contact():
                 f"Get in touch with Shreeja Marine Services. Email {EMAIL} or call {PHONE}.", p)
     html += header(p, "contact")
     html += f"""<main id="main">
-{page_hero("Contact Us", f'<a href="{p}index.html" class="hover:text-accent">Home</a><span>/</span><span class="text-white">Contact Us</span>', p)}
+{page_hero("Contact Us", f'<a href="{home(p)}" class="hover:text-accent">Home</a><span>/</span><span class="text-white">Contact Us</span>', p)}
 
 <section class="section bg-mist">
   <div class="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{info}</div>
